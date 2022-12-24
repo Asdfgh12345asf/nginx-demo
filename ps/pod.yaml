@@ -6,6 +6,7 @@ spec:
   containers:
   - name: envars-test-container
     image: nginx:1.14.2
+    command: [ "/bin/sh", "-c", "env" ]
     envFrom:
     - secretRef:
         name: test-secret
