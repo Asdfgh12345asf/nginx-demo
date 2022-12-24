@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
   - name: envars-test-container
-    image: nginx
+    image: nginx:1.14.2
     envFrom:
     - secretRef:
         name: test-secret
