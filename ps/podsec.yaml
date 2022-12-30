@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  containers:
+  - name: my-container
+    image: nginx:1.14.2
+    env:
+    - name: SECRET_KEY
+      valueFrom:
+        secretKeyRef:
+          name: mysecret
+          key: secretkey
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysecret
+type: Opaque
+data:
+  secretkey: c2VjcmV0S2V5
