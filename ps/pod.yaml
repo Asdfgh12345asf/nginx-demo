@@ -10,14 +10,14 @@ spec:
       - name: SECRET_USERNAME
         valueFrom:
           secretKeyRef:
-            name: mysecret
+            name: mysecret1111
             key: username
             optional: false # same as default; "mysecret" must exist
                             # and include a key named "username"
       - name: SECRET_PASSWORD
         valueFrom:
           secretKeyRef:
-            name: mysecret
+            name: mysecret1111
             key: password
             optional: false # same as default; "mysecret" must exist
                             # and include a key named "password"
