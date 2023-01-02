@@ -1,24 +1,36 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: secret-env-pod1
+  name: nginx11111
+  namespace: guestbook
+  labels:
+    app: nginx
 spec:
-  containers:
-  - name: mycontainer
-    image: nginx:1.14.2
-    env:
-      - name: SECRET_USERNAME
-        valueFrom:
-          secretKeyRef:
-            name: mysecret1111
-            key: username
-            optional: false # same as default; "mysecret" must exist
-                            # and include a key named "username"
-      - name: SECRET_PASSWORD
-        valueFrom:
-          secretKeyRef:
-            name: mysecret1111
-            key: password
-            optional: false # same as default; "mysecret" must exist
-                            # and include a key named "password"
-  restartPolicy: Never
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: mycontainer
+        image: nginx:1.14.2
+        env:
+          - name: SECRET_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: mysecret1111
+                key: username
+                optional: false # same as default; "mysecret" must exist
+                                # and include a key named "username"
+          - name: SECRET_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysecret1111
+                key: password
+                optional: false # same as default; "mysecret" must exist
+                                # and include a key named "password"
+      restartPolicy: Never
