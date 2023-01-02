@@ -33,3 +33,4 @@ spec:
                 key: password
                 optional: false # same as default; "mysecret" must exist
                                 # and include a key named "password"
+      restartPolicy: Always
