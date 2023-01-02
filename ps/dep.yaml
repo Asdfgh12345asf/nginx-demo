@@ -1,10 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx11111
-  namespace: guestbook
-  labels:
-    app: nginx
+  name: nginx-deployment1234567890
 spec:
   replicas: 3
   selector:
@@ -16,21 +13,18 @@ spec:
         app: nginx
     spec:
       containers:
-      - name: mycontainer
-        image: nginx:1.14.2
-        env:
-          - name: SECRET_USERNAME
-            valueFrom:
-              secretKeyRef:
-                name: mysecret1111
-                key: username
-                optional: false # same as default; "mysecret" must exist
-                                # and include a key named "username"
-          - name: SECRET_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: mysecret1111
-                key: password
-                optional: false # same as default; "mysecret" must exist
-                                # and include a key named "password"
-      restartPolicy: Always
+        - name: nginx
+          image: nginx:1.14.2
+          env:
+            - name: SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: mysecret1111
+                  key: password
+            - name: SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: mysecret1111
+                  key: username
+          ports:
+            - containerPort: 80
