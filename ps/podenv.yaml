@@ -11,14 +11,14 @@ spec:
         valueFrom:
           secretKeyRef:
             name: test-secret
-            key: username
+            key: enhjZGVz
             optional: false # same as default; "mysecret" must exist
                             # and include a key named "username"
       - name: SECRET_PASSWORD
         valueFrom:
           secretKeyRef:
             name: test-secret
-            key: password
+            key: enhjZGVz
             optional: false # same as default; "mysecret" must exist
                             # and include a key named "password"
   restartPolicy: Never
