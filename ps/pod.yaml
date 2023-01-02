@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: secret-env-pod
+  name: secret-env-pod1
 spec:
   containers:
   - name: mycontainer
