@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment-123456
+  name: nginx-deployment-envfrom
   namespace: guestbook
   labels:
     app: nginx
