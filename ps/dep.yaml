@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment1234567890
+  name: nginx-deployment-env
 spec:
   replicas: 3
   selector:
