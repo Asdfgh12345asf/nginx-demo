@@ -4,21 +4,10 @@ metadata:
   name: secret-env-pod
 spec:
   containers:
-  - name: mycontainer
-    image: nginx:1.14.2
-    env:
-      - name: SECRET_USERNAME
-        valueFrom:
-          secretKeyRef:
+      - name: nginx
+        image: nginx:1.14.2
+        envFrom:
+        - secretRef:
             name: test-secret
-            key: username
-            optional: false # same as default; "mysecret" must exist
-                            # and include a key named "username"
-      - name: SECRET_PASSWORD
-        valueFrom:
-          secretKeyRef:
-            name: test-secret
-            key: password
-            optional: false # same as default; "mysecret" must exist
-                            # and include a key named "password"
-  restartPolicy: Never
+        ports:
+        - containerPort: 80
