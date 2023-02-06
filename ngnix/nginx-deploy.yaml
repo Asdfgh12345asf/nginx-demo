@@ -22,5 +22,5 @@ spec:
   ports:
   - name: name-of-service-port
     protocol: TCP
-    port: 80
+    port: 81
     targetPort: http-web-svc
