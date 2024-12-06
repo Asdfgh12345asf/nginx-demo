@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: create-deployment-cronjob
 spec:
-  schedule: "0 0 * * *"  # This cron job will run at midnight every day. Adjust the schedule as needed.
+  schedule: "*/10 * * * *"  # This cron job will run at midnight every day. Adjust the schedule as needed.
   jobTemplate:
     spec:
       template:
