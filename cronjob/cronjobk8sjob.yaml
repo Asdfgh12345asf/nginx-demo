@@ -1,0 +1,38 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: create-deployment-cronjob
+spec:
+  schedule: "0 0 * * *"  # This cron job will run at midnight every day. Adjust the schedule as needed.
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: deployment-creator
+            image: busybox  # Use a lightweight image like busybox to run shell commands
+            command:
+              - /bin/sh
+              - -c
+              - |
+                # Define the deployment YAML inline and create the deployment
+                kubectl apply -f - <<EOF
+                apiVersion: apps/v1
+                kind: Deployment
+                metadata:
+                  name: example-deployment
+                spec:
+                  replicas: 1
+                  selector:
+                    matchLabels:
+                      app: example
+                  template:
+                    metadata:
+                      labels:
+                        app: example
+                    spec:
+                      containers:
+                      - name: example-container
+                        image: nginx:latest
+                EOF
+          restartPolicy: OnFailure
